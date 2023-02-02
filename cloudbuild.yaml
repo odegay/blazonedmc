@@ -1,6 +1,6 @@
 steps:
 - name: 'gcr.io/cloud-builders/docker'
-  args: ['build', '-f', 'Dockerfile_dev', '-t', 'us-central1-docker.pkg.dev/$PROJECT_ID/blazonedmc-containers/blzmci:latest', '.']
+  args: ['build', '--no-cache', '-f', 'Dockerfile_dev', '-t', 'us-central1-docker.pkg.dev/$PROJECT_ID/blazonedmc-containers/blzmci:latest', '.']
 images:
 - 'us-central1-docker.pkg.dev/$PROJECT_ID/blazonedmc-containers/blzmci:latest'
 
