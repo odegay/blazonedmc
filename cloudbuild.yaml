@@ -1,0 +1,5 @@
+steps:
+- name: 'gcr.io/cloud-builders/docker'
+  args: ['build', '-f', 'Dockerfile_dev', '-t', 'gcr.io/samp-170518/blazonedmc-data/blazonedmc_main_image/blzmcim', '.']
+
+
