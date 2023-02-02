@@ -1,8 +1,7 @@
 FROM docker.io/itzg/minecraft-server
 
-WORKDIR /data
-RUN chown minecraft: plugins
 WORKDIR /data/plugins/
+RUN chown minecraft: plugins
 RUN wget https://ci.opencollab.dev/job/GeyserMC/job/Geyser/job/master/lastSuccessfulBuild/artifact/bootstrap/spigot/build/libs/Geyser-Spigot.jar
 
 WORKDIR /data
