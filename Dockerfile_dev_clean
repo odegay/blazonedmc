@@ -11,6 +11,7 @@ COPY /config/minecraft_config/server.properties server.properties
 COPY /jar/mc_server_1_19_3.jar server.jar
 COPY /jar/paper_1_19_3_386.jar paper.jar
 COPY /jar/geyser_spigot.jar ./plugins/geyser_spigot.jar
+COPY /jar/floodgate_spigot.jar ./plugins/floodgate_spigot.jar
 
 
 # RUN wget https://storage.googleapis.com/blazonedmc-data/minecraft_main/mc_server_1_19_3.jar
