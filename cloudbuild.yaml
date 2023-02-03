@@ -5,7 +5,9 @@
 #- 'us-central1-docker.pkg.dev/$PROJECT_ID/blazonedmc-containers/blzmci:latest'
 
 steps:
-- name: 'gcr.io/$PROJECT_ID/git'
+- name: google/cloud-sdk:alpine
+  id: Clone repo
+  entrypoint: git  
   args: ['clone', 'https://github.com/odegay/blazonedmc.git']
 
 - name: 'curlimages/curl'  
