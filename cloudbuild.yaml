@@ -12,14 +12,14 @@ steps:
   entrypoint: git  
   args: ['clone', 'https://github.com/odegay/blazonedmc.git']
 
-- name: 'gcr.io/cloud-builders/wget'  
-  args: ['-O', '/jar/mc_server_1_19_3.jar', 'https://storage.googleapis.com/blazonedmc-data/minecraft_main/mc_server_1_19_3.jar']
+#- name: 'gcr.io/cloud-builders/wget'  
+#  args: ['-O', '/jar/mc_server_1_19_3.jar', 'https://storage.googleapis.com/blazonedmc-data/minecraft_main/mc_server_1_19_3.jar']
 
-- name: 'gcr.io/cloud-builders/wget'  
-  args: ['-O', '/jar/geyser_spigot.jar','https://storage.googleapis.com/blazonedmc-data/minecraft_main/geyser_spigot.jar']
+#- name: 'gcr.io/cloud-builders/wget'  
+#  args: ['-O', '/jar/geyser_spigot.jar','https://storage.googleapis.com/blazonedmc-data/minecraft_main/geyser_spigot.jar']
 
-- name: 'gcr.io/cloud-builders/wget'  
-  args: ['-O', '/jar/paper_1_19_3_386.jar','https://storage.googleapis.com/blazonedmc-data/minecraft_main/paper_1_19_3_386.jar']
+#- name: 'gcr.io/cloud-builders/wget'  
+#  args: ['-O', '/jar/paper_1_19_3_386.jar','https://storage.googleapis.com/blazonedmc-data/minecraft_main/paper_1_19_3_386.jar']
 
 - name: 'gcr.io/cloud-builders/docker'
   args: ['build', '--no-cache', '-f', 'Dockerfile_dev_clean', '-t', 'us-central1-docker.pkg.dev/$PROJECT_ID/blazonedmc-containers/blzmci:latest', '.']
