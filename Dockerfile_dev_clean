@@ -1,0 +1,20 @@
+FROM openjdk:19-jdk-alpine3.16
+
+RUN apk update
+
+WORKDIR /data/
+COPY /config/minecraft_config/eula.txt eula.txt
+COPY /config/minecraft_config/server.properties server.properties
+COPY /jar/mc_server_1_19_3.jar server.jar
+COPY /jar/paper_1_19_3_386.jar paper.jar
+COPY /jar/geyser_spigot.jar ./plugins/geyser_spigot.jar
+
+
+# RUN wget https://storage.googleapis.com/blazonedmc-data/minecraft_main/mc_server_1_19_3.jar
+# RUN wget https://storage.googleapis.com/blazonedmc-data/minecraft_main/paper_1_19_3_386.jar
+
+# RUN wget https://storage.googleapis.com/blazonedmc-data/minecraft_main/geyser_spigot.jar
+
+ENTRYPOINT ["java", "-Xms2G", "-Xmx4G", "-jar", "paper.jar", "--nogui"]
+
+    

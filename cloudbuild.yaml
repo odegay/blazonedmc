@@ -1,7 +1,23 @@
+#steps:
+#- name: 'gcr.io/cloud-builders/docker'
+#  args: ['build', '--no-cache', '-f', 'Dockerfile_dev', '-t', 'us-central1-docker.pkg.dev/$PROJECT_ID/blazonedmc-containers/blzmci:latest', '.']
+#images:
+#- 'us-central1-docker.pkg.dev/$PROJECT_ID/blazonedmc-containers/blzmci:latest'
+
 steps:
+- name: 'gcr.io/$PROJECT_ID/git'
+  args: ['clone', 'https://github.com/odegay/blazonedmc.git']
+
+- name: 'curlimages/curl'  
+  args: ['https://storage.googleapis.com/blazonedmc-data/minecraft_main/mc_server_1_19_3.jar']
+
+- name: 'curlimages/curl'  
+  args: ['https://storage.googleapis.com/blazonedmc-data/minecraft_main/geyser_spigot.jar']
+
+- name: 'curlimages/curl'  
+  args: ['https://storage.googleapis.com/blazonedmc-data/minecraft_main/paper_1_19_3_386.jar']
+
 - name: 'gcr.io/cloud-builders/docker'
-  args: ['build', '--no-cache', '-f', 'Dockerfile_dev', '-t', 'us-central1-docker.pkg.dev/$PROJECT_ID/blazonedmc-containers/blzmci:latest', '.']
+  args: ['build', '--no-cache', '-f', 'Dockerfile_dev_clean', '-t', 'us-central1-docker.pkg.dev/$PROJECT_ID/blazonedmc-containers/blzmci:latest', '.']
 images:
 - 'us-central1-docker.pkg.dev/$PROJECT_ID/blazonedmc-containers/blzmci:latest'
-
-
