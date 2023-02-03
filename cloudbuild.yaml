@@ -11,13 +11,13 @@ steps:
   args: ['clone', 'https://github.com/odegay/blazonedmc.git']
 
 - name: 'curlimages/curl'  
-  args: ['https://storage.googleapis.com/blazonedmc-data/minecraft_main/mc_server_1_19_3.jar']
+  args: ['https://storage.googleapis.com/blazonedmc-data/minecraft_main/mc_server_1_19_3.jar', '-o', 'server.jar']
 
 - name: 'curlimages/curl'  
-  args: ['https://storage.googleapis.com/blazonedmc-data/minecraft_main/geyser_spigot.jar']
+  args: ['https://storage.googleapis.com/blazonedmc-data/minecraft_main/geyser_spigot.jar', '-o', 'geyser_spigot.jar']
 
 - name: 'curlimages/curl'  
-  args: ['https://storage.googleapis.com/blazonedmc-data/minecraft_main/paper_1_19_3_386.jar']
+  args: ['https://storage.googleapis.com/blazonedmc-data/minecraft_main/paper_1_19_3_386.jar', '-o', 'paper.jar']
 
 - name: 'gcr.io/cloud-builders/docker'
   args: ['build', '--no-cache', '-f', 'Dockerfile_dev_clean', '-t', 'us-central1-docker.pkg.dev/$PROJECT_ID/blazonedmc-containers/blzmci:latest', '.']
