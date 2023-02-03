@@ -2,6 +2,9 @@ FROM openjdk:19-jdk-alpine3.16
 
 RUN apk update
 
+EXPOSE 25565
+EXPOSE 19132/udp
+
 WORKDIR /data/
 COPY /config/minecraft_config/eula.txt eula.txt
 COPY /config/minecraft_config/server.properties server.properties
