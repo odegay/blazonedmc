@@ -5,7 +5,6 @@
 #- 'us-central1-docker.pkg.dev/$PROJECT_ID/blazonedmc-containers/blzmci:latest'
 
 #TODO: make the yaml file version independend and move out jar references. REFACTOR
-
 steps:
 - name: google/cloud-sdk:alpine
   id: Clone repo

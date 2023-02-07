@@ -7,7 +7,6 @@ docker run -e EULA=true -p 25565:25565 --name blzmcc blzmc
 # vanila with interaction
 docker run -e EULA=true -d -it -p 25565:25565 --name blzmcc blzmc
 
-
 # paper with interaction
 docker run -e EULA=true -e TYPE=PAPER -p 25565:25565 --name blzmcc blzmc
 
