@@ -1,20 +1,24 @@
 FROM openjdk:19-jdk-alpine3.16
 
-RUN apk add jq
 RUN apk update
+
+RUN apk add jq
+RUN apk add bash
+
 
 EXPOSE 25565
 EXPOSE 19132/udp
 
+VOLUME /data/LEVELS
+
 WORKDIR /data/
 COPY /config/minecraft_config/eula.txt eula.txt
 COPY /config/minecraft_config/server.properties server.properties
-COPY /jar/mc_server_1_19_3.jar server.jar
+COPY /config/bukkit/bukkit.yml bukkit.yml
+COPY /jar/mc_server_1_19_3.jar mojang_1.19.3.jar
 COPY /jar/paper_1_19_3_386.jar paper.jar
 COPY /jar/geyser_spigot.jar ./plugins/geyser_spigot.jar
 COPY /jar/floodgate_spigot.jar ./plugins/floodgate_spigot.jar
-
-VOLUME /data/LEVEL
 
 # RUN wget https://storage.googleapis.com/blazonedmc-data/minecraft_main/mc_server_1_19_3.jar
 # RUN wget https://storage.googleapis.com/blazonedmc-data/minecraft_main/paper_1_19_3_386.jar
