@@ -15,7 +15,7 @@ WORKDIR /data/
 COPY /config/minecraft_config/eula.txt eula.txt
 COPY /config/minecraft_config/server.properties server.properties
 COPY /config/bukkit/bukkit.yml bukkit.yml
-COPY /jar/mc_server_1_19_3.jar mojang_1.19.3.jar
+COPY /jar/mc_server_1_19_3.jar minecraft_1.19.3.jar
 COPY /jar/paper_1_19_3_386.jar paper.jar
 COPY /jar/geyser_spigot.jar ./plugins/geyser_spigot.jar
 COPY /jar/floodgate_spigot.jar ./plugins/floodgate_spigot.jar
