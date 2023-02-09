@@ -17,8 +17,8 @@ steps:
 - name: 'gcr.io/cloud-builders/docker'
   args: ['push', 'us-central1-docker.pkg.dev/$PROJECT_ID/blazonedmc-containers/blzmci']
 
-#- name: 'asdsadasdd'
-
+- name: 'gcr.io/google.com/cloudsdktool/google-cloud-cli'
+  args: ['pubsub', 'topics', 'publish', 'blz-vm-stop', '--message="stop"']     
 #images:
 #  - 'us-central1-docker.pkg.dev/$PROJECT_ID/blazonedmc-containers/blzmci:latest'
 
