@@ -1,6 +1,6 @@
 FROM docker.io/itzg/minecraft-server
-WORKDIR /data/plugins/
-RUN wget https://ci.opencollab.dev/job/GeyserMC/job/Geyser/job/master/lastSuccessfulBuild/artifact/bootstrap/spigot/build/libs/Geyser-Spigot.jar
-
-WORKDIR /data
-RUN chown minecraft: plugins
+WORKDIR /data/
+COPY /config/minecraft_config/eula.txt eula.txt
+COPY /config/minecraft_config/server.properties server.properties
+COPY /config/bukkit/bukkit.yml bukkit.yml
+COPY /Plugins/ ./plugins/

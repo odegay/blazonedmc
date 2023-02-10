@@ -11,8 +11,12 @@ steps:
   entrypoint: git  
   args: ['clone', 'https://github.com/odegay/blazonedmc.git']
 
+#- name: 'gcr.io/cloud-builders/docker'
+#  args: ['build', '--no-cache', '-f', 'Dockerfile_dev_clean', '-t', 'us-central1-docker.pkg.dev/$PROJECT_ID/blazonedmc-containers/blzmci:latest', '.']
+
 - name: 'gcr.io/cloud-builders/docker'
-  args: ['build', '--no-cache', '-f', 'Dockerfile_dev_clean', '-t', 'us-central1-docker.pkg.dev/$PROJECT_ID/blazonedmc-containers/blzmci:latest', '.']
+  args: ['build', '--no-cache', '-f', 'Dockerfile_dev', '-t', 'us-central1-docker.pkg.dev/$PROJECT_ID/blazonedmc-containers/blzmci:latest', '.']
+
 
 - name: 'gcr.io/cloud-builders/docker'
   args: ['push', 'us-central1-docker.pkg.dev/$PROJECT_ID/blazonedmc-containers/blzmci']
