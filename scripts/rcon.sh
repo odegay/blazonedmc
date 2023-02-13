@@ -15,6 +15,7 @@ ESCAPE_CHAR=$(echo -en "\x1b")
 # stdout Raw reply from the rcon server
 function rcon_send_raw()
 {
+	echo -e "SENDING: $RCON_HEADER${@:2} and $1"
 	echo -n "$RCON_HEADER${@:2}" | nc -u -w 1 $1
 }
 
@@ -34,27 +35,6 @@ function rcon_send()
 	echo -e "PORT $PORT"
 	echo -e "COMMAND $COMMAND"	
 	rcon_send_raw "$SERVER $PORT" rcon $PASSWORD $COMMAND | rcon_strip_header n | rcon_recolor
-
-	case $4 in
-		0)
-			rcon_send_raw "$SERVER $PORT" rcon $PASSWORD $COMMAND | rcon_strip_header n | rcon_recolor
-			;;
-		1)
-			local time=$(printf "%ld.%06d" $(date +%s) $RANDOM)
-			local hash=$(rcon_hash $PASSWORD "$time $COMMAND")
-			rcon_send_raw "$SERVER $PORT" "srcon HMAC-MD4 TIME $hash $time $COMMAND" | rcon_strip_header n | rcon_recolor
-			;;
-		2)
-			local challenge=$(rcon_send_raw "-p $SECURE_PORT $SERVER $PORT" getchallenge) # | rcon_strip_header "challenge " )
-			challenge=$(echo -n $challenge | rcon_strip_header "challenge "  |  head -c 11)
-			local hash=$(rcon_hash $PASSWORD "$challenge $COMMAND")
-			rcon_send_raw "-p $SECURE_PORT $SERVER $PORT" "srcon HMAC-MD4 CHALLENGE $hash $challenge $COMMAND"  | rcon_strip_header n | rcon_recolor
-			;;
-		*)
-			echo 1>&2 Unsupported protocol
-			return 1
-			;;
-	esac
 }
 
 # Create MD4 HMAC

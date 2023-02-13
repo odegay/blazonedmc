@@ -7,6 +7,7 @@ RUN apk add bash
 
 
 EXPOSE 25565
+EXPOSE 25575
 EXPOSE 19132/udp
 
 VOLUME /data/LEVELS
@@ -20,6 +21,7 @@ COPY /jar/paper_1_19_3_386.jar paper.jar
 #COPY /jar/geyser_spigot.jar ./plugins/geyser_spigot.jar
 #COPY /jar/floodgate_spigot.jar ./plugins/floodgate_spigot.jar
 COPY /Plugins/ ./plugins/
+COPY /scripts/ ./scripts/
 
 # RUN wget https://storage.googleapis.com/blazonedmc-data/minecraft_main/mc_server_1_19_3.jar
 # RUN wget https://storage.googleapis.com/blazonedmc-data/minecraft_main/paper_1_19_3_386.jar
