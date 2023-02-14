@@ -18,3 +18,6 @@ docker run -e EULA=true -e TYPE=PAPER -p 25565:25565 --name blzmcc blzmc
 
 # scan the container
 docker exec -t -i blzmcc /bin/bash
+
+# track logs
+tail -f latest.log

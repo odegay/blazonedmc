@@ -21,7 +21,7 @@ function rcon_send_raw()
 
 # Send raw rcon command
 # $1	 Server
-# $2	 Port
+# $2	 Port5
 # $3	 Password
 # $4	 Secure protocol
 # $5...	 Rcon command
@@ -34,7 +34,8 @@ function rcon_send()
 	echo -e "SERVER: $SERVER"
 	echo -e "PORT $PORT"
 	echo -e "COMMAND $COMMAND"	
-	rcon_send_raw "$SERVER $PORT" rcon $PASSWORD $COMMAND | rcon_strip_header n | rcon_recolor
+	rcon_send_raw "$SERVER $PORT" rcon $PASSWORD $COMMAND 
+	#| rcon_strip_header n | rcon_recolor
 }
 
 # Create MD4 HMAC
