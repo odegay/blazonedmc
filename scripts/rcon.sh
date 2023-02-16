@@ -15,13 +15,16 @@ ESCAPE_CHAR=$(echo -en "\x1b")
 # stdout Raw reply from the rcon server
 function rcon_send_raw()
 {
-	echo -e "SENDING: $RCON_HEADER${@:2} and $1"
-	echo -n "$RCON_HEADER${@:2}" | nc -u -w 1 $1
+	echo -e "SENDING: $RCON_HEADER${@:2} AND THIS $1"
+	echo -n login | nc -u -v -w 1 $1 
+	echo -n "$RCON_HEADER${@:2}" | nc -u -v -w 1 $1
+
+	# nc -u -v -w 1 $1 RCON_HEADER${@:2}
 }
 
 # Send raw rcon command
 # $1	 Server
-# $2	 Port5
+# $2	 Port
 # $3	 Password
 # $4	 Secure protocol
 # $5...	 Rcon command
