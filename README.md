@@ -1,3 +1,6 @@
+# URL
+blz.sgang.club:25565
+
 # build the image
 docker build . -f Dockerfile_dev -t blzmc --no-cache
 
