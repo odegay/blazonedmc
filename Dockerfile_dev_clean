@@ -12,6 +12,7 @@ EXPOSE 8192
 EXPOSE 19132/udp
 
 VOLUME /data/LEVELS
+VOLUME /data/DYNMAP
 
 WORKDIR /data/
 COPY /config/minecraft_config/eula.txt eula.txt
@@ -25,7 +26,7 @@ COPY /jar/paper_1_19_3_386.jar paper.jar
 COPY /Plugins/ ./plugins/
 COPY /scripts/ ./scripts/
 
-COPY /config/dynamap/configuration.cfg ./plugins/dynamap/configuration.txt
+COPY /config/dynmap/configuration.cfg ./plugins/dynmap/configuration.txt
 
 # RUN wget https://storage.googleapis.com/blazonedmc-data/minecraft_main/mc_server_1_19_3.jar
 # RUN wget https://storage.googleapis.com/blazonedmc-data/minecraft_main/paper_1_19_3_386.jar
