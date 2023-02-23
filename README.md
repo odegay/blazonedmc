@@ -24,3 +24,6 @@ docker exec -t -i blzmcc /bin/bash
 
 # track logs
 tail -f latest.log
+
+# start-up/shutdown scripts logs
+sudo journalctl -u google-startup-scripts.service
