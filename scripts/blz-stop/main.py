@@ -99,16 +99,22 @@ def main():
     parser.add_argument("host")
     parser.add_argument("port", type=int)
     parser.add_argument("password")
-    parser.add_argument("command")
-    args = parser.parse_args()
-    print("args accepted ", args)
-    # Connect
-    sock = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
-    print("connecting to  host: ", args.host, "port: ", args.port)
-    sock.connect((args.host, args.port))
-    print("CONNECTED to ", args.host)
+    # parser.add_argument("command")
+    
+    args, unknownargs = parser.parse_known_args()
+    if len(unknownargs) > 0:
+        args.command = " ".join(unknownargs)
+    else:
+        print("command argument is missing ")    
+        return
+    try:    
+        # Connect
+        sock = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+        print("connecting to  host: ", args.host, "port: ", args.port)
+        sock.connect((args.host, args.port))
+        print("CONNECTED to ", args.host)
 
-    try:
+    
         # Log in
         result = login(sock, args.password)
         if not result:
