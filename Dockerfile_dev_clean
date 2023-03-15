@@ -33,4 +33,7 @@ COPY /config/dynmap/configuration.cfg ./plugins/dynmap/configuration.txt
 
 # RUN wget https://storage.googleapis.com/blazonedmc-data/minecraft_main/geyser_spigot.jar
 
-ENTRYPOINT ["java", "-Xms2G", "-Xmx4G", "-jar", "paper.jar", "--nogui"]
+RUN chmod +x ./scripts/blz-start/paper-start.sh
+
+# ENTRYPOINT ["java", "-Xms2G", "-Xmx4G", "-jar", "paper.jar", "--nogui"]
+ENTRYPOINT ["./scripts/blz-start/paper-start.sh"]
